@@ -1,7 +1,7 @@
 public class SubGame{
     // 0 for available, x for x, o for o, c for cat
     private char claimType;
-    private Box[] boxSet;
+    final Box[] boxSet;
 
     public SubGame(){
         claimType = '0';
@@ -31,14 +31,12 @@ public class SubGame{
         return claimType;
     }
     
-    public boolean checkForWin(int atNewPos){
-        boolean isWin = false;
-
+    private  boolean checkForWin(int atNewPos){
         int rowNo = atNewPos % 3;
         int colNo = atNewPos - (rowNo * 3);
 
         // row check
-        isWin = boxSet[rowNo].getVal() == boxSet[rowNo + 1].getVal() && boxSet[rowNo + 1].getVal() == boxSet[rowNo + 2].getVal();
+        boolean isWin = boxSet[rowNo].getVal() == boxSet[rowNo + 1].getVal() && boxSet[rowNo + 1].getVal() == boxSet[rowNo + 2].getVal();
 
         // column check
         isWin = isWin || (boxSet[colNo].getVal() == boxSet[colNo + 3].getVal() && boxSet[colNo + 3].getVal() == boxSet[colNo + 6].getVal());

@@ -1,5 +1,5 @@
 public class GameTracker{
-    private SubGame[] gameBoard;
+    final SubGame[] gameBoard;
 
     public GameTracker(){
         gameBoard = new SubGame[9];

@@ -44,6 +44,10 @@ public class GameTracker{
         return isWin;
     }
 
+    public char getSubStatus(int subGame){
+        return gameBoard[subGame].getStatus();
+    }
+
     public char getAtPosition(int subGame, int box){
         return gameBoard[subGame].getAt(box);
     }

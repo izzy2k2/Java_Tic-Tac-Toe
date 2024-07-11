@@ -27,6 +27,10 @@ public class SubGame{
         return boxWins;
     }
     
+    public char getAt(int pos){
+        return boxSet[pos].getVal();
+    }
+
     private  boolean checkForWin(int atNewPos){
         int rowNo = atNewPos % 3;
         int colNo = atNewPos - (rowNo * 3);

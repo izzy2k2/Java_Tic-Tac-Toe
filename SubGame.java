@@ -26,10 +26,6 @@ public class SubGame{
         }
         return boxWins;
     }
-
-    public char getVal(){
-        return claimType;
-    }
     
     private  boolean checkForWin(int atNewPos){
         int rowNo = atNewPos % 3;

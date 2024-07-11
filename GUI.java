@@ -2,7 +2,10 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,9 +24,19 @@ public class GUI implements ActionListener{
         labelHere = new JLabel("It's been clicked");
         panel.add(button);
         panel.add(labelHere);
+        panel.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mousePressed(MouseEvent e){
+                // gives position relative to top left of panel
+                System.out.println(e.getX() + " " + e.getY());
+            }
+        });
 
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
         panel.setLayout(new GridLayout());
+
+        ImageIcon logo = new ImageIcon("My Logo 1.png");
+        frame.setIconImage(logo.getImage());
 
         frame.add(panel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,5 +52,7 @@ public class GUI implements ActionListener{
         count++;
         labelHere.setText("button pushed " + count + " times");
     }
-    
+    public void AITurn(){
+        //
+    }
 }

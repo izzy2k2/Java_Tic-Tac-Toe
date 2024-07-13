@@ -1,14 +1,12 @@
-public class GUI{
+public class GUIController{
     GameTracker tracker;
     WindowFrame myFrame;
 
-    public GUI(){
+    public GUIController(){
         tracker = new GameTracker();
 
         myFrame = new WindowFrame();
-    }
-    public static void main(String[] args) {
-        new GUI();
+        System.out.println("Done with frame");
     }
 
 /*

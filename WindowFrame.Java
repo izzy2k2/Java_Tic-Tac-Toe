@@ -10,19 +10,22 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.Color;
 
 public class WindowFrame extends JFrame{
 
-    WindowFrame(){
+    public WindowFrame(){
+
+        this.add(this, BorderLayout.CENTER);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle("Tic Tac Toe");
+        this.pack();
+        this.setSize(420,420);
+        this.setVisible(true);
+        
         ImageIcon logo = new ImageIcon("My Logo 1.png");
         this.setIconImage(logo.getImage());
         this.getContentPane().setBackground(new Color(191, 127, 255));
         
-
-        this.add(panel, BorderLayout.CENTER);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("Tic Tac Toe");
-        this.pack();
-        this.setVisible(true);
     }
 }

@@ -77,6 +77,20 @@ public class GUI implements ActionListener{
                     int playerWinInI = checkCanWin(i, 'o');
                     if(winInI != 9){
                         // the AI can win the box
+                        // see if the box will win the game
+                        if(priority != 1){
+                            subGameChosen = i;
+                            boxChosen = winInI;
+                            priority = 1;
+                        }
+                        else{
+                            // choose at random between the previously selected win box and this one
+                        }
+                        if(checkCanWinGame(winInI, 'x')){
+                            subGameChosen = i;
+                            boxChosen = winInI;
+                            aIWin = true;
+                        }
                     }
                     else if(playerWinInI != 9){
                         // the player can win in the box
@@ -94,7 +108,7 @@ public class GUI implements ActionListener{
             if(boxChosen == 9){
                 boxChosen = checkCanWin(subSelected, 'o');
                 
-                // pick something at random to sit on
+                // pick something at random to sit on if there's no blocking the user
                 if(boxChosen == 9){
                     boolean isOk = false;
 
@@ -109,7 +123,9 @@ public class GUI implements ActionListener{
                 }
             }
         }
+
         // end of turn stuff here, using subGameChosen and boxChosen
+        endTurn(subGameChosen, boxChosen);
     }
     private int checkCanWin(int checkBox, char playerIs){
         int isWin = 9;
@@ -130,5 +146,9 @@ public class GUI implements ActionListener{
         }
 
         return isWin;
+    }
+
+    private void endTurn(int subHere, int boxHere){
+        //
     }
 }

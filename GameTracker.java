@@ -20,6 +20,10 @@ public class GameTracker{
         return gameWin;
     }
 
+    public int getAvailableFrom(int sub){
+        return gameBoard[sub].getRandomAvailable();
+    }
+
     private boolean checkWin(int subToCheck){
         int rowNo = subToCheck % 3;
         int colNo = subToCheck - (rowNo * 3);
@@ -54,5 +58,16 @@ public class GameTracker{
 
     public char getAtPosition(int subGame, int box){
         return gameBoard[subGame].getAt(box);
+    }
+
+    public int getRandomAvailable(){
+        int canReturn = 9;
+        while(canReturn == 9){
+            canReturn = (int)(Math.random()*9);
+            if(gameBoard[canReturn].getStatus() != '0'){
+                canReturn = 9;
+            }
+        }
+        return canReturn;
     }
 }

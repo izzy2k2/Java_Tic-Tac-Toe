@@ -124,18 +124,8 @@ public class GUI implements ActionListener{
 
             else if(!aIWin && subGameChosen == 9){
                 // random selection
-                int temp;
-                while(subGameChosen == 9){
-                    temp = (int)(Math.random() * 9);
-                    if(tracker.getSubStatus(temp) == '0'){
-                        // valid subgame, see if random box is acceptable
-                        int temp2 = (int)(Math.random() * 9);
-                        if(tracker.getAtPosition(temp, temp2) == '0'){
-                            subGameChosen = temp;
-                            boxChosen = temp2;
-                        }
-                    }
-                }
+                subGameChosen = tracker.getRandomAvailable();
+                boxChosen = tracker.getAvailableFrom(subGameChosen);
             }
         }
         else{
@@ -148,16 +138,7 @@ public class GUI implements ActionListener{
                 
                 // pick something at random to sit on if there's no blocking the user
                 if(boxChosen == 9){
-                    boolean isOk = false;
-
-                    // making sure the random selection is at an available spot
-                    while(!isOk){
-                        boxChosen = (int)(Math.random() * 9);
-                        char pos = tracker.getAtPosition(subGameChosen, boxChosen);
-                        if(pos == 'x' || pos == 'o'){
-                            isOk = true;
-                        }
-                    }
+                    boxChosen = tracker.getAvailableFrom(subGameChosen);
                 }
             }
         }
@@ -166,7 +147,7 @@ public class GUI implements ActionListener{
         endTurn(subGameChosen, boxChosen, 'x');
     }
 
-    // starts by checking if the player can win the box
+    // Sees if a player can win the game via placing something in checkBox, returns the box that will cause the win if so
     private int checkCanWin(int checkBox, char playerIs){
         int isWin = 9;
         if(tracker.getSubStatus(checkBox) == '0'){
@@ -178,6 +159,7 @@ public class GUI implements ActionListener{
         }
         return isWin;
     }
+
     private boolean checkCanWinGame(int claimingBox, char playerIs){
         int claimingInRow = claimingBox % 3;
         int claimingInCol = claimingBox - (claimingInRow * 3);

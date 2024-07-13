@@ -69,4 +69,15 @@ public class SubGame{
 
         return couldWin;
     }
+
+    public int getRandomAvailable(){
+        int toReturn = 9;
+        while(toReturn == 9){
+            toReturn = (int)(Math.random()*9);
+            if(boxSet[toReturn].getVal() != '0'){
+                toReturn = 9;
+            }
+        }
+        return toReturn;
+    }
 }

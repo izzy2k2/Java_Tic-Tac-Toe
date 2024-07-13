@@ -23,9 +23,9 @@ public class GameTracker{
         }
     }
 
-    public boolean  place(int subGame, int box, char player){
+    public boolean  place(int subGame, int box){
         boolean gameWin = false;
-        if(gameBoard[subGame].claimBox(box, player)){
+        if(gameBoard[subGame].claimBox(box, currPlayer)){
             // check for full game win
             if(checkWin(subGame)){
                 // game is won

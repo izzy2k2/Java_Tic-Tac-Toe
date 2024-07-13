@@ -52,11 +52,13 @@ public class GUI implements ActionListener{
     public static void main(String[] args) {
         new GUI();
     }
+
     @Override
     public void actionPerformed(ActionEvent e){
         count++;
         labelHere.setText("button pushed " + count + " times");
     }
+    
     public void AITurn(int subSelected){
         int subGameChosen = 9;
         int boxChosen = 9;
@@ -136,7 +138,7 @@ public class GUI implements ActionListener{
             if(boxChosen == 9){
                 boxChosen = checkCanWin(subSelected, 'o');
                 
-                // pick something at random to sit on if there's no blocking the user
+                // pick something at random to pick if there's no blocking the user
                 if(boxChosen == 9){
                     boxChosen = tracker.getAvailableFrom(subGameChosen);
                 }
@@ -180,5 +182,6 @@ public class GUI implements ActionListener{
     private void endTurn(int subHere, int boxHere, char player){
         // place selection, then do any updating needed
         tracker.place(subHere, boxHere, player);
+        tracker.switchPlayer();
     }
 }

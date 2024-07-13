@@ -1,10 +1,25 @@
 public class GameTracker{
     final SubGame[] gameBoard;
+    private char currPlayer;
 
     public GameTracker(){
         gameBoard = new SubGame[9];
         for (int i = 0; i < 9; i++) {
             gameBoard[i] = new SubGame();
+        }
+        currPlayer = 'o';
+    }
+
+    public char getPlayer(){
+        return currPlayer;
+    }
+
+    public void switchPlayer(){
+        if(currPlayer == 'x'){
+            currPlayer = 'o';
+        }
+        else{
+            currPlayer = 'x';
         }
     }
 

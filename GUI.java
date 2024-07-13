@@ -151,7 +151,7 @@ public class GUI implements ActionListener{
         }
 
         // end of turn stuff here, using subGameChosen and boxChosen
-        endTurn(subGameChosen, boxChosen);
+        endTurn(subGameChosen, boxChosen, 'x');
     }
 
     // starts by checking if the player can win the box
@@ -183,7 +183,8 @@ public class GUI implements ActionListener{
         return isWin;
     }
 
-    private void endTurn(int subHere, int boxHere){
-        //
+    private void endTurn(int subHere, int boxHere, char player){
+        // place selection, then do any updating needed
+        tracker.place(subHere, boxHere, player);
     }
 }

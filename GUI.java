@@ -64,7 +64,6 @@ public class GUI implements ActionListener{
         if(subSelected == 9){
             // any box can be picked
             boolean aIWin = false;
-            short priority = 0;
             int blockEnemySub = 9;
             int blockEnemyBox = 9;
             boolean playerCanWin = false;
@@ -75,13 +74,13 @@ public class GUI implements ActionListener{
                 if(tracker.getSubStatus(i) == 'x' || tracker.getSubStatus(i) == 'o' || tracker.getSubStatus(i) == 'c'){
                     int winInI = checkCanWin(i, 'x');
                     int playerWinInI = checkCanWin(i, 'o');
+
                     if(winInI != 9){
                         // the AI can win the box
                         // see if the box will win the game
-                        if(priority != 1){
+                        if(subGameChosen == 9){
                             subGameChosen = i;
                             boxChosen = winInI;
-                            priority = 1;
                         }
                         else{
                             // choose at random between the previously selected win box and this one
@@ -92,12 +91,39 @@ public class GUI implements ActionListener{
                             aIWin = true;
                         }
                     }
-                    else if(playerWinInI != 9){
+
+                    // if the AI can't win the box and it hasn't found a spot where the player can win everything, it should see if the player can win the box here
+                    else if(!playerCanWin && playerWinInI != 9){
                         // the player can win in the box
-                        blockEnemySub = i;
-                        blockEnemyBox = playerWinInI;
+                        if(blockEnemyBox == 9){
+                            blockEnemySub = i;
+                            blockEnemyBox = playerWinInI;
+                        }
+                        else{
+                            // pick one at random between the old and new
+                        }
+                        if(checkCanWinGame(playerWinInI, 'o')){
+                            blockEnemySub = i;
+                            blockEnemyBox = playerWinInI;
+                            playerCanWin = true;
+                        }
                     }
                 }
+            }
+
+            // now see what the loop has yielded, if the loop makes the decision or if it should place something random
+            // no need to do anything if aiwin is true, subGame and box are perfect
+            // if ai can't win, see if it can block a player win
+            if(!aIWin && playerCanWin){
+                subGameChosen = blockEnemySub;
+                boxChosen = blockEnemyBox;
+            }
+            // if the user can't win and a spot has been selected by the loop, leave that alone
+            else if(!aIWin && subGameChosen == 9 && blockEnemyBox != 9){
+                // player can't win the whole game but they can win something and that's something the bot doesn't want
+            }
+            else if(!aIWin){
+                // 
             }
         }
         else{
@@ -127,8 +153,17 @@ public class GUI implements ActionListener{
         // end of turn stuff here, using subGameChosen and boxChosen
         endTurn(subGameChosen, boxChosen);
     }
+
+    // starts by checking if the player can win the box
     private int checkCanWin(int checkBox, char playerIs){
         int isWin = 9;
+        if(tracker.getSubStatus(checkBox) == '0'){
+            for (int i = 0; i < 9; i++) {
+                if(tracker.checkCouldWin(checkBox, i, playerIs)){
+                    isWin = i;
+                }
+            }
+        }
         return isWin;
     }
     private boolean checkCanWinGame(int claimingBox, char playerIs){

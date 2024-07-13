@@ -43,6 +43,10 @@ public class GameTracker{
         }
         return isWin;
     }
+    
+    public boolean checkCouldWin(int subToCheck, int posIn, char player){
+        return gameBoard[subToCheck].checkCouldWin(posIn, player);
+    }
 
     public char getSubStatus(int subGame){
         return gameBoard[subGame].getStatus();

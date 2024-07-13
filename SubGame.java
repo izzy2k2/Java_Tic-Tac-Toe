@@ -50,4 +50,23 @@ public class SubGame{
         
         return isWin;
     }
+
+    public boolean checkCouldWin(int atPos, char checkFor){
+        int row = atPos / 3;
+        int col = atPos % 3;
+
+        // just start with the row
+        boolean couldWin = (atPos == row || boxSet[row].getVal() == checkFor) && (atPos == row + 1 || boxSet[row + 1].getVal() == checkFor) && (atPos == row + 2 || boxSet[row + 2].getVal() == checkFor);
+
+        // column check
+        couldWin = couldWin || ((atPos == col || boxSet[col].getVal() == checkFor) && (atPos == col + 3 || boxSet[col + 3].getVal() == checkFor) && (atPos == col + 6 || boxSet[col + 6].getVal() == checkFor));
+
+        // diagonals
+        if(!couldWin && atPos % 2 == 0){
+            couldWin = atPos % 4 == 0 && ((atPos == 0 || boxSet[0].getVal() == checkFor) && (atPos == 4 || boxSet[4].getVal() == checkFor) && (atPos == 8 || boxSet[8].getVal() == checkFor));
+            couldWin = couldWin || ((atPos == 2 || boxSet[2].getVal() == checkFor) && (atPos == 4 || boxSet[4].getVal() == checkFor) && (atPos == 6 || boxSet[6].getVal() == checkFor));
+        }
+
+        return couldWin;
+    }
 }

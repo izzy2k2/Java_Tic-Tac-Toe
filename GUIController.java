@@ -6,7 +6,6 @@ public class GUIController{
         tracker = new GameTracker();
 
         myFrame = new WindowFrame();
-        System.out.println("Done with frame");
     }
 
 /*

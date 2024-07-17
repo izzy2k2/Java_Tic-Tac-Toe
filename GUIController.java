@@ -1,13 +1,13 @@
 
+import java.awt.Color;
 
 public class GUIController{
-    GameTracker tracker;
-    WindowFrame myFrame;
+    private OverallPanel gamePanel = new OverallPanel();
+    private WindowFrame myFrame = new WindowFrame();
 
     public GUIController(){
-        tracker = new GameTracker();
-
-        myFrame = new WindowFrame();
+        myFrame.setBackground(Color.pink);
+        myFrame.add(gamePanel);
     }
 
 /*
@@ -18,6 +18,10 @@ public class GUIController{
         labelHere.setText("button pushed " + count + " times");
     }
 */
+
+    public void resetGame(){
+        gamePanel.resetGame();
+    }
 
     // The intelligence behind the bot's turn in singleplayer games
     public void AITurn(int subSelected){
@@ -34,7 +38,7 @@ public class GUIController{
             for (int i = 0; !aIWin && i < 9; i++) {
                 // ends if there's the potential for the bot to win
                 // start by seeing if the subgame is taken
-                if(tracker.getSubStatus(i) == 'x' || tracker.getSubStatus(i) == 'o' || tracker.getSubStatus(i) == 'c'){
+                if(gamePanel.getSubStatus(i) == 'x' || gamePanel.getSubStatus(i) == 'o' || gamePanel.getSubStatus(i) == 'c'){
                     int winInI = checkCanWin(i, 'x');
                     int playerWinInI = checkCanWin(i, 'o');
 
@@ -87,8 +91,8 @@ public class GUIController{
 
             else if(!aIWin && subGameChosen == 9){
                 // random selection
-                subGameChosen = tracker.getRandomAvailable();
-                boxChosen = tracker.getAvailableFrom(subGameChosen);
+                subGameChosen = gamePanel.getRandomAvailableSub();
+                boxChosen = gamePanel.getAvailableFrom(subGameChosen);
             }
         }
         else{
@@ -101,7 +105,7 @@ public class GUIController{
                 
                 // pick something at random to pick if there's no blocking the user
                 if(boxChosen == 9){
-                    boxChosen = tracker.getAvailableFrom(subGameChosen);
+                    boxChosen = gamePanel.getAvailableFrom(subGameChosen);
                 }
             }
         }
@@ -110,12 +114,12 @@ public class GUIController{
         endTurn(subGameChosen, boxChosen);
     }
 
-    // Sees if a player can win the game via placing something in checkBox, returns the box that will cause the win if so
+    // Sees if a player can win the game via placing anything in checkBox, returns the box that will cause the win if so
     private int checkCanWin(int checkBox, char playerIs){
         int isWin = 9;
-        if(tracker.getSubStatus(checkBox) == '0'){
+        if(gamePanel.getSubStatus(checkBox) == '0'){
             for (int i = 0; i < 9; i++) {
-                if(tracker.checkCouldWin(checkBox, i, playerIs)){
+                if(gamePanel.checkCouldWinSub(checkBox, i, playerIs)){
                     isWin = i;
                 }
             }
@@ -129,13 +133,13 @@ public class GUIController{
         int claimingInCol = claimingBox - (claimingInRow * 3);
 
         // see if row/column is a winner if the position is claimed
-        boolean isWin = (claimingBox == claimingInRow || tracker.getSubStatus(claimingInRow) == playerIs) && (claimingBox == claimingInRow + 1 || tracker.getSubStatus(claimingInRow + 1) == playerIs) && (claimingBox == claimingInRow + 2 || tracker.getSubStatus(claimingInRow + 2) == playerIs);
-        isWin = isWin || ((claimingBox == claimingInCol || tracker.getSubStatus(claimingInCol) == playerIs) && (claimingBox == claimingInCol + 3 || tracker.getSubStatus(claimingInCol + 3) == playerIs) && (claimingBox == claimingInCol + 6 || tracker.getSubStatus(claimingInCol + 6) == playerIs));
+        boolean isWin = (claimingBox == claimingInRow || gamePanel.getSubStatus(claimingInRow) == playerIs) && (claimingBox == claimingInRow + 1 || gamePanel.getSubStatus(claimingInRow + 1) == playerIs) && (claimingBox == claimingInRow + 2 || gamePanel.getSubStatus(claimingInRow + 2) == playerIs);
+        isWin = isWin || ((claimingBox == claimingInCol || gamePanel.getSubStatus(claimingInCol) == playerIs) && (claimingBox == claimingInCol + 3 || gamePanel.getSubStatus(claimingInCol + 3) == playerIs) && (claimingBox == claimingInCol + 6 || gamePanel.getSubStatus(claimingInCol + 6) == playerIs));
 
         // see about diagonals
         if(!isWin && claimingBox % 2 == 0){
-            isWin = (claimingBox % 4 == 0) && ((claimingBox == 0 || tracker.getSubStatus(0) == playerIs) && (claimingBox == 4 || tracker.getSubStatus(4) == playerIs) && (claimingBox == 8 || tracker.getSubStatus(8) == playerIs));
-            isWin = isWin || ((claimingBox == 2 || tracker.getSubStatus(2) == playerIs) && (claimingBox == 4 || tracker.getSubStatus(4) == playerIs) && (claimingBox == 8 || tracker.getSubStatus(8) == playerIs));
+            isWin = (claimingBox % 4 == 0) && ((claimingBox == 0 || gamePanel.getSubStatus(0) == playerIs) && (claimingBox == 4 || gamePanel.getSubStatus(4) == playerIs) && (claimingBox == 8 || gamePanel.getSubStatus(8) == playerIs));
+            isWin = isWin || ((claimingBox == 2 || gamePanel.getSubStatus(2) == playerIs) && (claimingBox == 4 || gamePanel.getSubStatus(4) == playerIs) && (claimingBox == 8 || gamePanel.getSubStatus(8) == playerIs));
         }
 
         return isWin;
@@ -144,8 +148,11 @@ public class GUIController{
     // End of turn actions for either player
     private void endTurn(int subHere, int boxHere){
         // place selection, then do any updating needed
-        tracker.place(subHere, boxHere);
-        tracker.switchPlayer();
+        char placeResult = gamePanel.setBox(subHere, boxHere);
+        if(placeResult != '0' && placeResult != '1'){
+            // full game has been won
+        }
+        gamePanel.swapCurrPlayer();
 
         // update GUI accordingly
     }

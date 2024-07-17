@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import javax.swing.JPanel;
 
 // Makes more sense for this to replace GameTracker
@@ -11,6 +12,7 @@ public class OverallPanel extends JPanel{
             subGames[i] = new SubGamePanel();
         }
         currPlayer = 'o';
+        setPreferredSize(new Dimension(600,300));
     }
 
     // for when the player/ai selects which box they want to play in
@@ -81,6 +83,7 @@ public class OverallPanel extends JPanel{
         return subGames[sub].checkCouldWin(posCheck, forPlayer);
     }
 
+    // sees if the entire game has become a cat's game, only happens when setting a box could lead to it
     private boolean isCat(){
         boolean isCat = true;
 

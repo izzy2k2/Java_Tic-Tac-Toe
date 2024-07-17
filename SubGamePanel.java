@@ -1,5 +1,5 @@
-
 import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 public class SubGamePanel extends JPanel{
@@ -7,13 +7,13 @@ public class SubGamePanel extends JPanel{
     private char subGameState;
     public SubGamePanel(){
         this.setBackground(new Color(0xffebcd));
+        this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         boxes = new BoxPanel[9];
         subGameState = '0';
 
         for (int i = 0; i < 9; i++) {
             boxes[i] = new BoxPanel();
         }
-        // keep going, need boundaries
     }
 
     // If the box is successfully changed, it won't return '0'.
@@ -66,7 +66,7 @@ public class SubGamePanel extends JPanel{
             boxes[i].setState('0');
         }
     }
-    
+
     // Delegating the check for if the newest change causes a win state
     private boolean checkForWin(int checkChangedBox){
         char checkEquals = boxes[checkChangedBox].getBoxState();

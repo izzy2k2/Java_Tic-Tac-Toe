@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 public class BoxPanel extends JPanel{
@@ -7,6 +8,7 @@ public class BoxPanel extends JPanel{
 
     public BoxPanel(){
         this.setBackground(new Color(0xffebcd));
+        this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         boxState = '0';
         // keep going, need boundaries
     }

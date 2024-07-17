@@ -9,6 +9,7 @@ public class SubGamePanel extends JPanel{
         this.setBackground(new Color(0xffebcd));
         boxes = new BoxPanel[9];
         subGameState = '0';
+
         for (int i = 0; i < 9; i++) {
             boxes[i] = new BoxPanel();
         }
@@ -32,6 +33,10 @@ public class SubGamePanel extends JPanel{
             }
         }
         return isWin;
+    }
+
+    public char getBoxState(int boxAt){
+        return boxes[boxAt].getBoxState();
     }
 
     public char getWinState(){
@@ -61,6 +66,7 @@ public class SubGamePanel extends JPanel{
             boxes[i].setState('0');
         }
     }
+    
     // Delegating the check for if the newest change causes a win state
     private boolean checkForWin(int checkChangedBox){
         char checkEquals = boxes[checkChangedBox].getBoxState();

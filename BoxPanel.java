@@ -21,6 +21,6 @@ public class BoxPanel extends JPanel{
             this.setBackground(new Color(0xffebcd));
             // reset clickable
         }
-        // else does whatever changes I want made to the box(not clickable)
+        // else does whatever changes I want made to the box when it's claimed (not clickable)
     }
 }

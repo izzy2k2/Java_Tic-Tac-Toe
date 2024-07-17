@@ -51,6 +51,18 @@ public class OverallPanel extends JPanel{
         return subGames[sub].getRandomAvailable();
     }
 
+    // Gets a random available subgame to work with
+    public int getRandomAvailableSub(){
+        int canReturn = 9;
+        while(canReturn == 9){
+            canReturn = (int)(Math.random()*9);
+            if(subGames[canReturn].getWinState() != '0'){
+                canReturn = 9;
+            }
+        }
+        return canReturn;
+    }
+
     // Swaps which player is playing, whatever class is the controller will call this at turn's end
     public void swapCurrPlayer() {
         if(currPlayer == 'o'){
@@ -65,6 +77,10 @@ public class OverallPanel extends JPanel{
         return currPlayer;
     }
 
+    public boolean checkCouldWinSub(int sub, int posCheck, char forPlayer){
+        return subGames[sub].checkCouldWin(posCheck, forPlayer);
+    }
+
     private boolean isCat(){
         boolean isCat = true;
 
@@ -72,6 +88,14 @@ public class OverallPanel extends JPanel{
             isCat = subGames[i].getWinState() != '0';
         }
         return isCat;
+    }
+
+    public char getSubStatus(int subGame){
+        return subGames[subGame].getWinState();
+    }
+
+    public char getBoxState(int subGame, int box){
+        return subGames[subGame].getBoxState(box);
     }
 
     // Checks to see if the full game is won when a subgame is won
@@ -101,5 +125,4 @@ public class OverallPanel extends JPanel{
     private void gameIsWon(){
         // all the things to do when the game is won
     }
-
 }

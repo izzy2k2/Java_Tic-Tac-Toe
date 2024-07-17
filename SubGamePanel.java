@@ -73,6 +73,26 @@ public class SubGamePanel extends JPanel{
         return isWin;
     }
 
+    // checks to see if the given char can win the subGame at fillBox
+    public boolean checkCouldWin(int fillBox, char checkFor){
+        char checkEquals = checkFor;
+        int inRow = fillBox / 3;
+        int inCol = fillBox % 3;
+
+        // start with row
+        boolean couldWin = (boxes[inRow].getBoxState() == checkEquals || fillBox == inRow) && (boxes[inRow + 1].getBoxState() == checkEquals || fillBox == inRow + 1) && (boxes[inRow + 2].getBoxState() == checkEquals || fillBox == inRow + 2);
+
+        // col
+        couldWin = couldWin || (boxes[inCol].getBoxState() == checkEquals && boxes[inCol + 3].getBoxState() == checkEquals && boxes[inCol + 6].getBoxState() == checkEquals);
+
+        // diagonal check
+        if(!couldWin && fillBox % 2 == 0){
+            couldWin = boxes[2].getBoxState() == checkEquals && boxes[4].getBoxState() == checkEquals && boxes[6].getBoxState() == checkEquals;
+            couldWin = couldWin || (fillBox % 4 == 0 && boxes[0].getBoxState() == checkEquals && boxes[4].getBoxState() == checkEquals && boxes[8].getBoxState() == checkEquals);
+        }
+
+        return couldWin;
+    }
     // Delegation for checking if the game is resolved as a cat's game
     private boolean checkForCat(){
         boolean isCat = true;

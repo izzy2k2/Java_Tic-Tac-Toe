@@ -19,6 +19,7 @@ public class SubGamePanel extends JPanel{
     // Just a successful placement is '1' 
     // If the box causes setTo to win the box it'll return that
     // If it's a cat's game, it's 'c'
+    // Does not reset the boxes or do anything else for a won subGame
     public char setBox(int boxAt, char setTo){
         char isWin = '0';
         if(subGameState == '0' && boxes[boxAt].getBoxState() != '0'){
@@ -35,6 +36,17 @@ public class SubGamePanel extends JPanel{
 
     public char getWinState(){
         return subGameState;
+    }
+
+    public int getRandomAvailable(){
+        int toReturn = 9;
+        while(toReturn == 9){
+            toReturn = (int)(Math.random()*9);
+            if(boxes[toReturn].getBoxState() != '0'){
+                toReturn = 9;
+            }
+        }
+        return toReturn;
     }
 
     // Resets this subGame and its boxes
@@ -98,6 +110,9 @@ public class SubGamePanel extends JPanel{
         boolean isCat = true;
         for (int i = 0; isCat && i < 9; i++) {
             isCat = boxes[i].getBoxState() != '0';
+        }
+        if(isCat){
+            subGameState = 'c';
         }
         return isCat;
     }

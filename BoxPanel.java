@@ -1,7 +1,6 @@
 
 import java.awt.Color;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -36,10 +35,10 @@ public class BoxPanel extends JButton{
         else{
             this.setEnabled(false);
             if(stateTo == 'o'){
-                thisLabel.setIcon(new ImageIcon("O.png"));
+                thisLabel.setIcon(new StretchIcon("O.png"));
             }
             else{
-                thisLabel.setIcon(new ImageIcon("X.png"));
+                thisLabel.setIcon(new StretchIcon("X.png"));
             }
             // remove clickable, set the background(?) to image
         }

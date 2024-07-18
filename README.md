@@ -1,3 +1,5 @@
 # Java_Tic-Tac-Toe
  
-# Constructed in its entirety by Isabelle La Polla
+# Constructed by Isabelle La Polla
+
+# Form of StretchIcon used is from user bspkrs

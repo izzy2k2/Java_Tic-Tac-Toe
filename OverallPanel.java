@@ -135,7 +135,12 @@ public class OverallPanel extends JPanel{
         return result;
     }
 
-    private void gameIsWon(){
+    public void gameIsWon(char whoWon){
+        System.out.println(whoWon + "won the game!");
         // all the things to do when the game is won
+
+        for (int i = 0; i < 9; i++) {
+            subGames[i].resetSubGame();
+        }
     }
 }

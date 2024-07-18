@@ -13,10 +13,12 @@ public class BoxPanel extends JPanel{
         // keep going, need boundaries
     }
 
+    // Get what state this box is in
     public char getBoxState(){
         return boxState;
     }
 
+    // Set the state, either claiming the box or clearing it
     public void setState(char stateTo){
         boxState = stateTo;
         if(stateTo == '0'){
@@ -24,5 +26,8 @@ public class BoxPanel extends JPanel{
             // reset clickable
         }
         // else does whatever changes I want made to the box when it's claimed (not clickable)
+        else{
+            // remove clickable, set the background(?) to image
+        }
     }
 }

@@ -35,14 +35,17 @@ public class SubGamePanel extends JPanel{
         return isWin;
     }
 
+    // Gets the requested box's state
     public char getBoxState(int boxAt){
         return boxes[boxAt].getBoxState();
     }
 
+    // Gets this subGame's state
     public char getWinState(){
         return subGameState;
     }
 
+    // Gets a random position out of the available spaces
     public int getRandomAvailable(){
         int toReturn = 9;
         while(toReturn == 9){
@@ -91,7 +94,7 @@ public class SubGamePanel extends JPanel{
         return isWin;
     }
 
-    // checks to see if the given char can win the subGame at fillBox
+    // Checks to see if the given char can win the subGame at fillBox
     public boolean checkCouldWin(int fillBox, char checkFor){
         char checkEquals = checkFor;
         int inRow = fillBox / 3;
@@ -111,6 +114,7 @@ public class SubGamePanel extends JPanel{
 
         return couldWin;
     }
+
     // Delegation for checking if the game is resolved as a cat's game
     private boolean checkForCat(){
         boolean isCat = true;

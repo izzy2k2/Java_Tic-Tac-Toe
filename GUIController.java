@@ -2,8 +2,8 @@ import java.awt.Color;
 import javax.swing.BoxLayout;
 
 public class GUIController{
-    private OverallPanel gamePanel = new OverallPanel();
-    private WindowFrame myFrame = new WindowFrame();
+    private final OverallPanel gamePanel = new OverallPanel();
+    private final WindowFrame myFrame = new WindowFrame();
 
     public GUIController(){
         myFrame.setBackground(Color.pink);
@@ -12,15 +12,7 @@ public class GUIController{
         // how do you make gridBag apply to something like this? Should I switch things so the panels are all right here?
     }
 
-/*
-    // responds to action being performed
-    @Override
-    public void actionPerformed(ActionEvent e){
-        count++;
-        labelHere.setText("button pushed " + count + " times");
-    }
-*/
-
+    // Resets the game
     public void resetGame(){
         gamePanel.resetGame();
     }

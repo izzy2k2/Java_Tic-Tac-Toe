@@ -25,7 +25,7 @@ public class OverallPanel extends JPanel{
         setPreferredSize(new Dimension(600,300));
     }
 
-    // for when the player/ai selects which box they want to play in
+    // For when the player/ai selects which box they want to play in
     public char setBox(int game, int box){
         char isWin = subGames[game].setBox(box, currPlayer);
 
@@ -43,7 +43,6 @@ public class OverallPanel extends JPanel{
             }
         }
 
-        // 
         if(fullWin == '0' && (isWin != '0' && isWin != '1')){
             fullWin = isCat()? 'c' : '0';
         }
@@ -58,7 +57,7 @@ public class OverallPanel extends JPanel{
         currPlayer = 'o';
     }
 
-    // gets a random available position from the subgame
+    // Gets a random available position from the subgame
     public int getAvailableFrom(int sub){
         return subGames[sub].getRandomAvailable();
     }
@@ -85,15 +84,17 @@ public class OverallPanel extends JPanel{
         }
     }
 
+    // Gives the current player
     public char getPlayer(){
         return currPlayer;
     }
 
+    // Sees if forPlayer could win the given sub if placed in posCheck
     public boolean checkCouldWinSub(int sub, int posCheck, char forPlayer){
         return subGames[sub].checkCouldWin(posCheck, forPlayer);
     }
 
-    // sees if the entire game has become a cat's game, only happens when setting a box could lead to it
+    // Sees if the entire game has become a cat's game, only happens when setting a box could lead to it
     private boolean isCat(){
         boolean isCat = true;
 
@@ -103,10 +104,12 @@ public class OverallPanel extends JPanel{
         return isCat;
     }
 
+    // Gets the state of the requested subGame
     public char getSubStatus(int subGame){
         return subGames[subGame].getWinState();
     }
 
+    // Gets the state of the requested box
     public char getBoxState(int subGame, int box){
         return subGames[subGame].getBoxState(box);
     }
@@ -135,6 +138,7 @@ public class OverallPanel extends JPanel{
         return result;
     }
 
+    // Used when the game is won, announces who won and resets the game when that's selected
     public void gameIsWon(char whoWon){
         System.out.println(whoWon + "won the game!");
         // all the things to do when the game is won

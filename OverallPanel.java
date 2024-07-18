@@ -1,5 +1,6 @@
 import java.awt.Dimension;
 import java.awt.LayoutManager;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 // Makes more sense for this to replace GameTracker
@@ -27,7 +28,13 @@ public class OverallPanel extends JPanel{
 
     // For when the player/ai selects which box they want to play in
     public char setBox(int game, int box){
-        char isWin = subGames[game].setBox(box, currPlayer);
+        char isWin;
+        if(currPlayer == 'x'){
+            isWin = subGames[game].setBox(box, currPlayer);
+        }
+        else{
+            isWin = subGames[game].setBox(box, currPlayer);            
+        }
 
         char fullWin = '0';
         // if isWin = '0', failed to place, leave fullWin as is

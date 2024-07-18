@@ -1,5 +1,4 @@
 import java.awt.Color;
-import javax.swing.BoxLayout;
 
 public class GUIController{
     private final OverallPanel gamePanel = new OverallPanel();
@@ -8,7 +7,7 @@ public class GUIController{
     public GUIController(){
         myFrame.setBackground(Color.pink);
         myFrame.add(gamePanel);
-        myFrame.setLayout(new BoxLayout(myFrame.getContentPane(), BoxLayout.Y_AXIS));
+        myFrame.setVisible(true);
         // how do you make gridBag apply to something like this? Should I switch things so the panels are all right here?
     }
 

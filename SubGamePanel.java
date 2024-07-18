@@ -1,11 +1,13 @@
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class SubGamePanel extends JPanel{
     private final BoxPanel[] boxes;
     private char subGameState;
+    private JLabel thisLabel;
 
     public SubGamePanel(){
         this.setBackground(new Color(0xffebcd));
@@ -17,6 +19,7 @@ public class SubGamePanel extends JPanel{
             boxes[i] = new BoxPanel();
             this.add(boxes[i]);
         }
+        thisLabel = new JLabel();
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 
@@ -64,6 +67,8 @@ public class SubGamePanel extends JPanel{
     // Resets this subGame and its boxes
     public void resetSubGame() {
         subGameState = '0';
+        this.setBackground(new Color(0xffebcd));
+        thisLabel.setIcon(null);
         resetBoxes();
     }
 
@@ -94,6 +99,16 @@ public class SubGamePanel extends JPanel{
 
         if(isWin){
             subGameState = checkEquals;
+            for (int i = 0; i < 9; i++) {
+                boxes[i].setEnabled(false);
+            }
+            if(checkEquals == 'x'){
+                thisLabel.setIcon(new StretchIcon("X.png"));
+            }
+            else{
+                thisLabel.setIcon(new StretchIcon("O.png"));
+            }
+            this.setBackground(new Color(0xc9bb9d));
         }
         return isWin;
     }

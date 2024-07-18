@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 public class BoxPanel extends JPanel{
     private char boxState;
-    private JLabel thisLabel;
+    private final JLabel thisLabel;
 
     public BoxPanel(){
         this.setBackground(new Color(0xffebcd));

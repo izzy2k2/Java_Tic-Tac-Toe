@@ -29,10 +29,12 @@ public class BoxPanel extends JButton{
         if(stateTo == '0'){
             this.setBackground(new Color(0xffebcd));
             thisLabel.setIcon(null);
+            this.setEnabled(true);
             // reset clickable
         }
         // else does whatever changes I want made to the box when it's claimed (not clickable)
         else{
+            this.setEnabled(false);
             if(stateTo == 'o'){
                 thisLabel.setIcon(new ImageIcon("O.png"));
             }

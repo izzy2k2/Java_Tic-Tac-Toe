@@ -1,6 +1,5 @@
 import java.awt.Dimension;
 import java.awt.LayoutManager;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 // Makes more sense for this to replace GameTracker
@@ -12,6 +11,7 @@ public class OverallPanel extends JPanel{
         subGames = new SubGamePanel[9];
         for (int i = 0; i < 9; i++) {
             subGames[i] = new SubGamePanel();
+            this.add(subGames[i]);
         }
         currPlayer = 'o';
         setPreferredSize(new Dimension(600,300));
@@ -21,6 +21,7 @@ public class OverallPanel extends JPanel{
         subGames = new SubGamePanel[9];
         for (int i = 0; i < 9; i++) {
             subGames[i] = new SubGamePanel();
+            this.add(subGames[i]);
         }
         currPlayer = 'o';
         setPreferredSize(new Dimension(600,300));

@@ -1,10 +1,13 @@
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class SubGamePanel extends JPanel{
     private final BoxPanel[] boxes;
     private char subGameState;
+    private JLabel thisLabel;
+
     public SubGamePanel(){
         this.setBackground(new Color(0xffebcd));
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -13,7 +16,11 @@ public class SubGamePanel extends JPanel{
 
         for (int i = 0; i < 9; i++) {
             boxes[i] = new BoxPanel();
+            this.add(boxes[i]);
         }
+
+        thisLabel = new JLabel();
+        this.add(thisLabel);
     }
 
     // If the box is successfully changed, it won't return '0'.

@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -6,10 +7,11 @@ import javax.swing.JPanel;
 public class SubGamePanel extends JPanel{
     private final BoxPanel[] boxes;
     private char subGameState;
-    private JLabel thisLabel;
+    private final JLabel thisLabel;
 
     public SubGamePanel(){
         this.setBackground(new Color(0xffebcd));
+        this.setLayout(new GridLayout(3,3,1,1));
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         boxes = new BoxPanel[9];
         subGameState = '0';

@@ -149,4 +149,8 @@ public class GUIController{
 
         // update GUI accordingly
     }
+
+    public static void main(String[] args) {
+        new GUIController();
+    }
 }

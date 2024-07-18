@@ -2,10 +2,10 @@
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-public class BoxPanel extends JPanel{
+public class BoxPanel extends JButton{
     private char boxState;
     private final JLabel thisLabel;
 

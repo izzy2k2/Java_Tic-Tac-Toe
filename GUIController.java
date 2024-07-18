@@ -151,6 +151,10 @@ public class GUIController{
     }
 
     public static void main(String[] args) {
-        new GUIController();
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run(){
+                new GUIController();
+            }
+        });
     }
 }

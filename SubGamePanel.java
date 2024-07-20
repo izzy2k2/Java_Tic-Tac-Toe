@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 public class SubGamePanel extends JPanel{
     private final BoxPanel[] boxes;
     private char subGameState;
-    private JLabel thisLabel;
+    private final JLabel thisLabel;
 
     public SubGamePanel(){
         this.setBackground(new Color(0xffebcd));

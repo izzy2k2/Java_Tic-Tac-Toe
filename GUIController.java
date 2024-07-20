@@ -1,4 +1,5 @@
 import java.awt.Color;
+import javax.swing.JComboBox;
 
 public class GUIController{
     private final OverallPanel gamePanel = new OverallPanel();
@@ -6,9 +7,16 @@ public class GUIController{
 
     public GUIController(){
         myFrame.setBackground(Color.pink);
+
+        Integer[] players = new Integer[2];
+        players[0] =1;
+        players[1]=2;
+        JComboBox playerCount = new JComboBox(players);
+        myFrame.add(playerCount);
+        // see if 
         myFrame.add(gamePanel);
+
         myFrame.setVisible(true);
-        // how do you make gridBag apply to something like this? Should I switch things so the panels are all right here?
     }
 
     // Resets the game

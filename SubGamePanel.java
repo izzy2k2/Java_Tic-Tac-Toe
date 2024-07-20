@@ -83,6 +83,24 @@ public class SubGamePanel extends JPanel{
         resetBoxes();
     }
 
+    // For temporarily making the entire box temporarily diabled
+    public void makeAllUnavailable(){
+        this.setEnabled(false);
+        for (int i = 0; i < 9; i++) {
+            boxes[i].setDisabled();
+        }
+    }
+
+    // For bringing back all unclaimed boxes
+    public void makeAllAvailable(){
+        this.setEnabled(true);
+        for (int i = 0; i < 9; i++) {
+            if(boxes[i].getBoxState() == '0'){
+                boxes[i].setEnabled();
+            }
+        }
+    }
+
     // Delegating resetting boxes since both a full reset and a win should reset them
     private void resetBoxes(){
         for (int i = 0; i < 9; i++) {

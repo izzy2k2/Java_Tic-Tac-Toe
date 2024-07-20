@@ -23,6 +23,14 @@ public class BoxPanel extends JButton{
         return boxState;
     }
 
+    public void setDisabled(){
+        this.setEnabled(false);
+    }
+
+    public void setEnabled(){        
+        this.setEnabled(true);
+    }
+
     // Set the state, either claiming the box or clearing it
     public void setState(char stateTo){
         boxState = stateTo;

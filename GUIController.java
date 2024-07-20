@@ -3,6 +3,7 @@ import java.awt.Color;
 public class GUIController{
     private final OverallPanel gamePanel = new OverallPanel();
     private final WindowFrame myFrame = new WindowFrame();
+    private int currPlayerCount;
 
     public GUIController(){
         myFrame.setBackground(Color.pink);
@@ -12,6 +13,7 @@ public class GUIController{
         players[1]=2;
         JComboBox playerCount = new JComboBox(players);
         myFrame.add(playerCount);
+        // later, can look at contents using playerCount.getSelectedItem()
         // see if this can come at the top of the panel
 */
 

@@ -1,5 +1,4 @@
 import java.awt.Color;
-import javax.swing.JComboBox;
 
 public class GUIController{
     private final OverallPanel gamePanel = new OverallPanel();
@@ -7,13 +6,15 @@ public class GUIController{
 
     public GUIController(){
         myFrame.setBackground(Color.pink);
-
+/*
         Integer[] players = new Integer[2];
         players[0] =1;
         players[1]=2;
         JComboBox playerCount = new JComboBox(players);
         myFrame.add(playerCount);
-        // see if 
+        // see if this can come at the top of the panel
+*/
+
         myFrame.add(gamePanel);
 
         myFrame.setVisible(true);

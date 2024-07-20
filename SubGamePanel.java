@@ -47,6 +47,15 @@ public class SubGamePanel extends JPanel{
         return boxes[boxAt].getBoxState();
     }
 
+    public void wonSub(char winner){
+        subGameState = winner;
+        switch (winner) {
+            case 'o' -> thisLabel.setIcon(new StretchIcon("O.png"));
+            case 'x' -> thisLabel.setIcon(new StretchIcon("X.png"));
+            default -> thisLabel.setIcon(new StretchIcon("C.png"));
+        }
+    }
+
     // Gets this subGame's state
     public char getWinState(){
         return subGameState;

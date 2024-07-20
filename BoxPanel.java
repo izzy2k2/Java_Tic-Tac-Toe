@@ -1,4 +1,4 @@
-
+import java.awt.BasicStroke;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -11,6 +11,7 @@ public class BoxPanel extends JButton{
     public BoxPanel(){
         this.setBackground(new Color(0xffebcd));
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        this.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(1.5f)));
         boxState = '0';
         thisLabel = new JLabel();
         this.add(thisLabel);

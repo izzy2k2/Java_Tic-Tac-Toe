@@ -9,7 +9,7 @@ public class OverallPanel extends JPanel{
 
     public OverallPanel(){
         subGames = new SubGamePanel[9];
-        this.setLayout(new GridLayout(3,3));
+        this.setLayout(new GridLayout(3,3,0,0));
         for (int i = 0; i < 9; i++) {
             subGames[i] = new SubGamePanel();
             this.add(subGames[i]);

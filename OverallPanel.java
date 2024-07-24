@@ -1,9 +1,9 @@
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import javax.swing.JPanel;
+import javax.swing.JLayeredPane;
 
 // Makes more sense for this to replace GameTracker
-public class OverallPanel extends JPanel{
+public class OverallPanel extends JLayeredPane{
     private final SubGamePanel[] subGames;
     private char currPlayer;
 

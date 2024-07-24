@@ -13,15 +13,6 @@ public class GUIController implements ActionListener{
 
     public GUIController(){
         myFrame.setBackground(Color.pink);
-/*
-        Integer[] players = new Integer[2];
-        players[0] =1;
-        players[1]=2;
-        JComboBox playerCount = new JComboBox(players);
-        myFrame.add(playerCount);
-        // later, can look at contents using playerCount.getSelectedItem()
-        // see if this can come at the top of the panel
-*/
 
         myFrame.add(gamePanel);
 

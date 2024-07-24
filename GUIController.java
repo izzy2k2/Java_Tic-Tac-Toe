@@ -1,9 +1,15 @@
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
-public class GUIController{
+public class GUIController implements ActionListener{
     private final OverallPanel gamePanel = new OverallPanel();
     private final WindowFrame myFrame = new WindowFrame();
     private int currPlayerCount;
+    private final JButton single = new JButton("1 Player");
+    private final JButton multi = new JButton("2 Players");
+
 
     public GUIController(){
         myFrame.setBackground(Color.pink);
@@ -167,5 +173,15 @@ public class GUIController{
         gamePanel.swapCurrPlayer();
 
         // update GUI accordingly
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource() == single){
+            // do I need to put this in the frame class?
+        }
+        else if(e.getSource() == multi){
+            //
+        }
     }
 }

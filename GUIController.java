@@ -22,6 +22,14 @@ public class GUIController{
         myFrame.setVisible(true);
     }
 
+    public void setPlayerCount(int playerCount){
+        currPlayerCount = playerCount;
+    }
+
+    public int getPlayerCount(){
+        return currPlayerCount;
+    }
+
     // Resets the game
     public void resetGame(){
         gamePanel.resetGame();

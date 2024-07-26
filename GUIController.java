@@ -42,51 +42,19 @@ public class GUIController implements ActionListener{
             // see if there's anywhere the ai can win, use that
 
             boolean aIWin = false;
+            // start with aiWin check
+            for (int i = 0; i < 9; i++) {
+                if(!(gamePanel.getSubStatus(i) == 'x' || gamePanel.getSubStatus(i) == 'o' || gamePanel.getSubStatus(i) == 'c')){
+                    //
+                }
+            }
+
             int blockEnemySub = 9;
             int blockEnemyBox = 9;
             boolean playerCanWin = false;
 
             for (int i = 0; !aIWin && i < 9; i++) {
-                // ends if there's the potential for the bot to win
-                // start by seeing if the subgame is taken
-                if(gamePanel.getSubStatus(i) == 'x' || gamePanel.getSubStatus(i) == 'o' || gamePanel.getSubStatus(i) == 'c'){
-                    int winInI = checkCanWin(i, 'x');
-                    int playerWinInI = checkCanWin(i, 'o');
-
-                    if(winInI != 9){
-                        // the AI can win the box
-                        // see if the box will win the game
-                        if(subGameChosen == 9){
-                            subGameChosen = i;
-                            boxChosen = winInI;
-                        }
-                        else{
-                            // choose at random between the previously selected win box and this one
-                        }
-                        if(checkCanWinGame(winInI, 'x')){
-                            subGameChosen = i;
-                            boxChosen = winInI;
-                            aIWin = true;
-                        }
-                    }
-
-                    // if the AI can't win the box and it hasn't found a spot where the player can win everything, it should see if the player can win the box here
-                    else if(!playerCanWin && playerWinInI != 9){
-                        // the player can win in the box
-                        if(blockEnemyBox == 9){
-                            blockEnemySub = i;
-                            blockEnemyBox = playerWinInI;
-                        }
-                        else{
-                            // pick one at random between the old and new
-                        }
-                        if(checkCanWinGame(playerWinInI, 'o')){
-                            blockEnemySub = i;
-                            blockEnemyBox = playerWinInI;
-                            playerCanWin = true;
-                        }
-                    }
-                }
+                gamePanel.aiIntelligence(i);
             }
 
             // now see what the loop has yielded, if the loop makes the decision or if it should place something random
@@ -166,12 +134,6 @@ public class GUIController implements ActionListener{
         gamePanel.swapCurrPlayer();
 
         // update GUI accordingly
-    }
-
-    private int aiIntelligence(int[] inArray){
-        int solution = 9;
-        //
-        return solution;
     }
 
     @Override

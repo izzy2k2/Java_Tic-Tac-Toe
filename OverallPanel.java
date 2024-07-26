@@ -146,4 +146,10 @@ public class OverallPanel extends JLayeredPane{
             subGames[i].resetSubGame();
         }
     }
+
+    public int aiIntelligence(int subChosen){
+        int solution = 9;
+        //
+        return solution;
+    }
 }

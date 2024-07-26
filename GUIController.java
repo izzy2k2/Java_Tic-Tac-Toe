@@ -39,6 +39,8 @@ public class GUIController implements ActionListener{
 
         if(subSelected == 9){
             // any box can be picked
+            // see if there's anywhere the ai can win, use that
+
             boolean aIWin = false;
             int blockEnemySub = 9;
             int blockEnemyBox = 9;
@@ -164,6 +166,12 @@ public class GUIController implements ActionListener{
         gamePanel.swapCurrPlayer();
 
         // update GUI accordingly
+    }
+
+    private int aiIntelligence(int[] inArray){
+        int solution = 9;
+        //
+        return solution;
     }
 
     @Override
